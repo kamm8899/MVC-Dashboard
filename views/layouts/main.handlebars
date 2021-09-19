@@ -16,20 +16,21 @@
       </h1>
       <nav>
         {{#if loggedIn}}
-        <a href="/dashboard">Dashboard</a>
+        <a class="btn-no-style" href="/dashboard">Dashboard</a>
         <button id="logout" class="btn-no-style">logout</button>
         {{else}}
         <a href="/login">login</a>
         {{/if}}
       </nav>
     </header>
-    <div class="wrapper"></div>
+    <div class="wrapper">
     <main>
       {{{ body }}}
     </main>
     <footer>
       Thanks for visiting!
     </footer>
+  </div>
   </div>
   
   {{#if loggedIn}}

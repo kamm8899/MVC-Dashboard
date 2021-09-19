@@ -1,6 +1,5 @@
 * {
     box-sizing: border-box;
-    background-color:#0a97e9
   }
   
   body, html {
@@ -25,8 +24,8 @@
  
   
   button {
-    background-color: #225ca3;
-    border: 0;
+    background-color: rgb(252, 207, 147);
+    border: 3px;
     padding: 1%;
     color: white;
     font-weight: bold;
@@ -75,6 +74,7 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    background-color: #0a97e9;
   }
   
   header {
@@ -88,7 +88,11 @@
   }
   
   header h1 {
-    font-size: 1em;
+    font-size: 26px;
+    border-radius: 25px;
+    background-color:#b15006;
+    padding: 60px;
+    
   }
   
   main {
@@ -98,15 +102,16 @@
   
   .btn-no-style {
     background: none;
-    border: none;
-    padding: 0;
+    border: 3px;
+    padding: 20px;
     cursor: pointer;
     text-decoration: none;
-    color: #225ca3;
+    color: black;
     font-size: 100%;
     font-weight: bold;
     transition: color .1s;
     margin-left: 16px;
+    background-color: #0f1f7d;
   }
   
   .btn-no-style:hover {
