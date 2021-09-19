@@ -159,6 +159,7 @@
   .comment {
     padding: 1%;
     margin-bottom: 1%;
+    background-color:rgb(252, 207, 147);
   }
   
   .comment:nth-child(odd) {
