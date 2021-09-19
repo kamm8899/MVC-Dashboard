@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    background-color:#0a97e9
   }
   
   body, html {
@@ -15,11 +16,13 @@
     color: #225ca3;
     font-weight: bold;
     transition: color .1s;
+    justify-content: flex-start;
   }
   
   a:hover {
     color: #3486eb;
   }
+ 
   
   button {
     background-color: #225ca3;
@@ -79,7 +82,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 1%;
+    padding: 60px 50px;
+    width: 100%;
+    background-color:#0f1f7d;
   }
   
   header h1 {
