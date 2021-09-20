@@ -1,14 +1,14 @@
-<article class="post card">
+<article class="post homepage-style card">
   <div class="title card-header">
-    <a href="/post{{id}}" class= "post-title card-title" target="_blank">{{title}}</a>
+   <span><a href="/post{{id}}" class= "post-title card-title" target="_blank">{{title}}</a></span> 
+   <span style="float:right">Posted By {{user.username}} on {{format_date created_at}}</span>
+
   </div>
 
   <div class="card-body">
     <div class="card-text">
-      {{post_content}}
-    <b>{{user.username}}</b> | 
-       {{format_date created_at}} | <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
-    </div>
-        
+      {{post_content}} 
+    </div> 
+    <span><a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a></span>  
     </div>
 </article>
