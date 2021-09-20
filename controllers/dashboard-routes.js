@@ -11,7 +11,7 @@ router.get('/', withAuth, (req, res) =>{
         },
         attributes:[
             'id',
-            'post_url',
+            'post_content',
             'title',
             'created_at',
             [sequelize.literal('(SELECT COUNT (*) FROM vote WHERE post.id =vote.post_id)'), 'vote_count']
@@ -43,10 +43,10 @@ router.get('/', withAuth, (req, res) =>{
 });
 
 router.get('/edit/:id', withAuth, (res, req) =>{
-    Post.findByPk(req.params.id, {
+    Post.findOne(req.params.id, {
         attributes: [
           'id',
-          'post_url',
+          'post_content',
           'title',
           'created_at',
           [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
@@ -82,7 +82,44 @@ router.get('/edit/:id', withAuth, (res, req) =>{
           res.status(500).json(err);
         });
     });
-    
+
+    //add create route for post
+    router.get('/create', withAuth, (req,res) =>{
+      Post.findAll({
+        where:{
+          user_id: req.session.user_id
+        },
+        attributes:[
+          'id',
+          'title',
+          'created_at',
+          'post_content'
+        ],
+        include: [
+          {
+            model: Comment,
+            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+            include: {
+              model: User,
+              attributes: ['username']
+            }
+          },
+          {
+            model: User,
+            attributes: ['username']
+          }
+        ]
+      })
+        .then(dbPostData => {
+          // serialize data before passing to template
+          const posts = dbPostData.map(post => post.get({ plain: true }));
+          res.render('create-post', { posts, loggedIn: true });
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+        });
+    });
     
 
 
