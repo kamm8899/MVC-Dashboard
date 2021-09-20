@@ -16,7 +16,7 @@
       <h1 class="homepage">Lets Tech</h1>
       <nav>
         {{#if loggedIn}}
-        <a class="btn-no-style" href="/">Home</a>>
+        <a class="btn-no-style" href="/">Home</a>
         <a class="btn-no-style" href="/dashboard">Dashboard</a>
         <button id="logout" class="btn-no-style">logout</button>
         {{else}}
@@ -29,8 +29,11 @@
     <main>
       {{{ body }}}
     </main>
-    <footer class="footer">
-      Thank You For Teching with me Today!
+    <footer class="footer rows pb-2">
+      <h3>Thank You For Teching with me Today!</h3>
+       <p>
+          <a class= "btn-no-style" href="/dashboard/create/">Create Post</a>
+        </p>
     </footer>
   </div>
   </div>
