@@ -1,6 +1,6 @@
 <article>
   <a href="/dashboard"> &larr; Back to dashboard</a>
-  <h2>
+  <h2 class= "title mt-6">
     Edit Post
   </h2>
   <form class="edit-post-form">
@@ -8,17 +8,30 @@
       <input name="post-title" type="text" value="{{post.title}}" />
       <span>({{format_url post.post_url}})</span>
     </div>
-    <div>
+    <!--<div>
       {{post.vote_count}} {{format_plural "point" post.vote_count}} by you on {{format_date post.created_at}}
       |
       <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
     </div>
-    <button type="submit">Save post</button>
-    <button type="button" class="delete-post-btn">Delete post</button>
+    -->
+    <div>
+        <label for="post-content">Post:</label>
+      <input class="textarea" name="post-content" type="text" value="{{post.post_content}}" />
+    </div>
+    <div class="is-pulled-right">
+       Posted on: {{format_date post.created_at}}
+      |
+      <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
+    </div>
+    <button type="submit" class="button btn-style">Save post</button>
+    <button type="button" class="delete-post-btn btn-style">delete post</button>
   </form>
 </article>
+    
 
-<form class="comment-form">
+
+<!--check this one next 
+-<form class="comment-form">
   <div>
     <textarea name="comment-body"></textarea>
   </div>
@@ -26,7 +39,8 @@
   <div>
     <button type="submit">add comment</button>
   </div>
-</form>
+</form>>
+-->
 
 {{> comments post.comments}}
 
