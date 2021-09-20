@@ -12,6 +12,7 @@
     margin: 0;
     font-family: sans-serif;
     color: #333;
+    background-color: rgb(64,48,117);
   }
   
   a {
@@ -73,11 +74,11 @@
   form label {
     display: block;
   }
+ 
   
   .wrapper {
     width: 100%;
     min-height: 100%;
-    max-width: 1200px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -139,6 +140,10 @@
   
   .delete-post-btn:hover {
     background-color: #ff643d;
+  }
+
+  .card{
+    width: 50%;
   }
   
   .post {
