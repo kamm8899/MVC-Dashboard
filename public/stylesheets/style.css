@@ -23,12 +23,12 @@
   }
   
   a:hover {
-    color: #3486eb;
+    color: rgb(136,124,175);
   }
  
   
   button {
-    background-color: rgb(252, 207, 147);
+    background-color: rgb(38,23,88);
     border: 3px;
     padding: 1%;
     color: white;
@@ -83,6 +83,12 @@
     flex-direction: column;
     background-color:rgb(64,48,117);
   }
+  .homepage{
+    width: 30%;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(78,9,121,1) 23%, rgba(0,212,255,1) 100%);
+    color: white;
+  }
   
   header {
     border-bottom: 1px solid #ccc;
@@ -91,7 +97,7 @@
     align-items: center;
     padding: 60px 50px;
     width: 100%;
-    background-color: RGB(19,7,58);
+    background-color: RGB(38,23,88);
   }
   
   header h1 {
@@ -113,12 +119,13 @@
     padding: 20px;
     cursor: pointer;
     text-decoration: none;
-    color: black;
+    color: rgb(238, 228, 228);
     font-size: 100%;
     font-weight: bold;
     transition: color .1s;
     margin-left: 16px;
-    background-color: rgb(38,23,88);
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(78,9,121,1) 23%, rgba(0,212,255,1) 100%);
   }
   
   .btn-no-style:hover {
@@ -204,4 +211,7 @@
     justify-content: center;
     padding: 1%;
     font-size: 110%;
+    color: white;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(78,9,121,1) 23%, rgba(0,212,255,1) 100%);
   }
