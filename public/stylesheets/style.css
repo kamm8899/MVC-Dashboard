@@ -112,6 +112,7 @@
     flex: 1;
     padding: 2% 4%;
   }
+
   
   .btn-no-style {
     background: none;
@@ -159,6 +160,7 @@
   .card{
     width: 100%;
     background-color: rgb(5,168,255)!important;
+    display: block;
   }
 
   .card-header{
@@ -168,7 +170,7 @@
   .card-title{
     font-size: 25px;
   }
-  .login-form{
+  .form{
     width:50%;
     display: block;
     margin-left: auto;
@@ -176,6 +178,7 @@
     width: 40%;
     text-align: center;
   }
+  
   
   .post {
     margin-bottom: 2%;
