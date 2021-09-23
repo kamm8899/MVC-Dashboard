@@ -20,7 +20,7 @@ Post.init(
     },
     post_content: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     user_id: {
       type: DataTypes.INTEGER,

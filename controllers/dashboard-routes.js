@@ -11,8 +11,8 @@ router.get('/', withAuth, (req, res) =>{
         },
         attributes:[
             'id',
-            'post_content',
             'title',
+            'post_content',
             'created_at',
         ],
         include:[
@@ -33,7 +33,7 @@ router.get('/', withAuth, (req, res) =>{
     .then(dbPostData =>{
         //serialize data before passing to template
         const posts = dbPostData.map(post => post.get({plain: true}));
-        res.render('dashboard', {loggedIn: true, posts});
+        res.render('dashboard', {posts, loggedIn: true});
     })
     .catch(err =>{
         console.log(err);
@@ -48,8 +48,8 @@ router.get('/edit/:id', withAuth, (res, req) =>{
       }, 
         attributes: [
           'id',
-          'post_content',
           'title',
+          'post_content',
           'created_at'
         ],
         include: [
@@ -72,12 +72,9 @@ router.get('/edit/:id', withAuth, (res, req) =>{
             res.status(404).json({ message: 'No post found with this id' });
           return;
         }
-            const post = dbPostData.get({ plain: true });
+            const post = dbPostData.get({plain: true });
             
-            res.render('edit-post', {
-              post,
-              loggedIn: true
-            });
+            res.render('edit-post', {post,loggedIn: true});
           })
         .catch(err => {
           res.status(500).json(err);
