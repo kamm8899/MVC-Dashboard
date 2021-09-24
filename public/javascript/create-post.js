@@ -4,7 +4,9 @@ async function newFormHandler(event) {
   
     const title = document.querySelector('input[name="post-title"]').value;
     const post_content = document.querySelector('input[name="post-content"]').value;
-  
+
+    console.log(document.querySelector('input[name="post-content"]'));
+
     const response = await fetch(`/api/posts`, {
       method: 'POST',
       body: JSON.stringify({
@@ -24,3 +26,5 @@ async function newFormHandler(event) {
   }
   
   document.querySelector('.new-post-form').addEventListener('submit', newFormHandler);
+
+  //why do I have both add -post and create post with the same info

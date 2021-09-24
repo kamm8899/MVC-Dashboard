@@ -16,11 +16,13 @@ Post.init(
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     post_content: {
       type: DataTypes.TEXT,
+      //changed to true 
       allowNull: true,
+      defaultValue: null,
     },
     user_id: {
       type: DataTypes.INTEGER,
