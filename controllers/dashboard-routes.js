@@ -42,43 +42,58 @@ router.get('/', withAuth, (req, res) =>{
 });
 
 router.get('/edit/:id', withAuth, (res, req) =>{
-  
-    Post.findByPk(req.params.id,{
-      //   attributes: [
-      //     'id',
-      //     'title',
-      //     'post_content',
-      //     'created_at'
-      //   ],
-      //   include: [
-      //     {
-      //       model: Comment,
-      //       attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-      //       include: {
-      //         model: User,
-      //         attributes: ['username']
-      //       }
-      //     },
-      //     {
-      //       model: User,
-      //       attributes: ['username']
-      //     }
-      //   ]
-       })
+  const outerRequestPrint = Object.keys(req);
+  const innerRequestPrint = Object.keys(req.req);
+  const actualRequestId = parseInt(req.req.params.id);
+
+  console.log("\n\n");
+  console.log("===== Outer Request =====");
+  console.log(outerRequestPrint);
+
+  console.log("===== Inner Request =====");
+  console.log(innerRequestPrint);
+
+  console.log("The id is _actually_ in `req.req.params.id` => " + actualRequestId);
+  console.log("\n\n");
+
+    Post.findOne({
+      where:{
+        id: actualRequestId,
+      }, 
+        attributes: [
+          'id',
+          'title',
+          'post_content',
+          'created_at'
+        ],
+        include: [
+          {
+            model: Comment,
+            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+            include: {
+              model: User,
+              attributes: ['username']
+            }
+          },
+          {
+            model: User,
+            attributes: ['username']
+          }
+        ]
+      })
         .then(dbPostData => {
           if (dbPostData) {
-            const post = dbPostData.get({ plain: true });
+            res.status(404).json({ message: 'No post found with this id' });
+          return;
+        }
+            const post = dbPostData.get({plain: true });
             
             res.render('edit-post', {post,loggedIn: true});
-          } else {
-            res.status(404).end();
-          }
-        })
+          })
         .catch(err => {
-          res.status(500).json(err);
+          req.req.res.status(500).json(err);
         });
     });
-    
 
     //add create route for post
     router.get('/create', withAuth, (req,res) =>{
