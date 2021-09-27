@@ -41,24 +41,11 @@ router.get('/', withAuth, (req, res) =>{
     });
 });
 
-router.get('/edit/:id', withAuth, (res, req) =>{
-  const outerRequestPrint = Object.keys(req);
-  const innerRequestPrint = Object.keys(req.req);
-  const actualRequestId = parseInt(req.req.params.id);
-
-  console.log("\n\n");
-  console.log("===== Outer Request =====");
-  console.log(outerRequestPrint);
-
-  console.log("===== Inner Request =====");
-  console.log(innerRequestPrint);
-
-  console.log("The id is _actually_ in `req.req.params.id` => " + actualRequestId);
-  console.log("\n\n");
+router.get('/edit/:id', withAuth, (req, res) =>{
 
     Post.findOne({
       where:{
-        id: actualRequestId,
+        id: req.params.id,
       }, 
         attributes: [
           'id',
@@ -82,7 +69,7 @@ router.get('/edit/:id', withAuth, (res, req) =>{
         ]
       })
         .then(dbPostData => {
-          if (dbPostData) {
+          if (dbPostData === false) {
             res.status(404).json({ message: 'No post found with this id' });
           return;
         }
@@ -91,7 +78,7 @@ router.get('/edit/:id', withAuth, (res, req) =>{
             res.render('edit-post', {post,loggedIn: true});
           })
         .catch(err => {
-          req.req.res.status(500).json(err);
+        res.status(500).json(err);
         });
     });
 
